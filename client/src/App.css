@@ -1,0 +1,46 @@
+body{
+  font-family:arial;
+  margin:0px;
+  padding:0px;
+}
+
+.appContainer
+{
+  display:block;
+
+  width:500px;
+  height:500px;
+  /* make height auto later */
+
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:10vh;
+  border:2px solid black;
+  border-radius:30px;
+
+  overflow:hidden;
+}
+
+.appNav
+{
+  display:grid;
+  grid-template-columns:25% 25% 25% 25%;
+}
+
+.leftNav, .centralNav, .rightNav
+{
+  text-align:center;
+  padding:10px;
+}
+
+.leftNav
+{
+  /* border-top-left-radius: 30px;
+  border: 2px solid grey;
+  margin:0px; */
+}
+
+.leftNav.selected, .centralNav.selected, .rightNav.selected
+{
+  background-color:grey;
+}

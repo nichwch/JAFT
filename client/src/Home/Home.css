@@ -1,0 +1,111 @@
+body{
+  font-family:arial;
+  margin:0px;
+  padding:0px;
+}
+
+.homeContainer
+{
+  display:block;
+  width:500px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:10px;
+}
+
+.title1
+{
+  font-size:70px;
+  margin-bottom:0px;
+}
+
+.title2
+{
+  background-color:rgba(255,0,0,0.5);
+  display:inline-block;
+  margin-top:0px;
+}
+
+.title3
+{
+  font-size:25px;
+}
+
+.featureList
+{
+  font-size:40px;
+  margin:0px;
+  margin-top:15px;
+}
+
+a
+{
+  color:red;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+a:hover
+{
+  color:rgba(255,0,0,0.5);
+}
+
+.openButton
+{
+  display:inline-block;
+  vertical-align:top;
+  text-decoration: none;
+  padding:13px;
+  font-size:27.5px;
+  margin-right:3px;
+  color:black;
+  background-color:rgba(255,0,0,0.2);
+  height:55px;
+  text-align:center;
+  width:150px;
+  line-height:55px;
+}
+
+.openButton:hover
+{
+  background-color:rgba(255,0,0,0.5);
+  color:black;
+}
+
+.registerButton
+{
+  text-align:center;
+}
+
+.homeTags
+{
+  vertical-align:top;
+  background-color:rgba(255,0,0,0.2);
+  display:inline-block;
+  font-size:18px;
+  margin:0px 3px 3px 0px;
+  padding:2px;
+  color:black;
+}
+.homeTags:hover
+{
+  background-color:rgba(255,0,0,0.5);
+}
+.homeTagLink
+{
+  color:black;
+  font-weight:normal;
+}
+.homeTagLink:hover
+{
+  color:black;
+  font-weight:normal;
+}
+.homeTagContainer
+{
+  vertical-align:top;
+  margin-top:0px;
+  display:inline-block;
+  width:321px;
+  height:70px;
+}
