@@ -36,6 +36,7 @@ class App extends React.Component {
       on:true,
     });
     this.timer = setInterval(()=>{
+      //lol
       // console.log("now",moment(Date.now()).valueOf());
       // console.log("start",moment(this.state.startTime).valueOf());
       // console.log("subtract",moment(Date.now()).valueOf() - moment(this.state.startTime).valueOf());
