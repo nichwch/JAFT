@@ -8,7 +8,7 @@ function Main()
 {
   return(
     <React.Fragment>
-      <Route path="/write" component={App} />
+      <Route path="/timer" component={App} />
       <Route path="/features" component={Features} />
       <Route path="/" exact component={Home} />
     </React.Fragment>

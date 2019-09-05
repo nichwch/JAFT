@@ -10,7 +10,7 @@ function Home() {
         <h4 className="title2">Just Another Focus Timer</h4>
         <br />
 
-        <Link to="/write" className="openButton">
+        <Link to="/timer" className="openButton">
           Open App
         </Link>
         <span className="homeTagContainer">

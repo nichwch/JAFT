@@ -8,44 +8,48 @@ const Timer = (props) =>
   // },[]);
   let date = new Date(props.time);
 
-  let hours = date.getUTCHours()>0?
-  ((date.getUTCHours()+"").length>1?(date.getUTCHours()+"")+':' : "0"+date.getUTCHours()+':')
-  :
-  "";
+  //Is this elegant or hideous? I can't tell
+  let hours = Math.floor(date.getTime()/3600000);
+  let minutes = Math.floor((date.getTime()%3600000)/60000);
+  let seconds = Math.floor(((date.getTime()%3600000)%60000)/1000);
+  let milliseconds = Math.floor((((date.getTime()%3600000)%60000)%1000));
+  // console.log(hours,":",minutes,":",seconds,":",milliseconds);
 
-  let minutes = date.getUTCMinutes()>0?
-  ((date.getUTCMinutes()+"").length>1?(date.getUTCMinutes()+"")+':' : "0"+date.getUTCMinutes()+':')
-  :
-  "";
+  let hourDisplay = "";
+  let minuteDisplay = "";
+  let secondDisplay = "";
+  let millisecondDisplay = "";
 
-  let seconds = ""
-  if(hours.length>0)
+
+  if(milliseconds>=10) millisecondDisplay = milliseconds.toString().substring(0,2);
+  else millisecondDisplay = "0"+milliseconds.toString();
+
+  if(seconds>=10) secondDisplay = seconds.toString() + ":";
+  else secondDisplay = "0"+seconds.toString() + ":";
+
+  if(minutes>=10) minuteDisplay = minutes.toString() + ":";
+  else minuteDisplay = "0"+minutes.toString() + ":";
+
+  if(hours>=10) hourDisplay = hours.toString() + ":";
+  else hourDisplay = "0"+hours.toString() + ":";
+
+  if(hours>0)
   {
-    seconds = ((date.getUTCSeconds()+"").length>1?(date.getUTCSeconds()+"") : "0"+date.getUTCSeconds());
+    millisecondDisplay = "";
+    if(seconds>=10) secondDisplay = seconds.toString();
+    else secondDisplay = "0"+seconds.toString();
   }
-  else
-  {
-    seconds =((date.getUTCSeconds()+"").length>1?(date.getUTCSeconds()+"")+':' : "0"+date.getUTCSeconds()+':');
-  }
-
-  let milliseconds = "";
-  if(hours.length>0)
-  {
-    milliseconds = "";
-  }
-  else
-  {
-    milliseconds = ((date.getUTCMilliseconds()+"").length>1?(date.getUTCMilliseconds()+"").substring(0,2) : "0"+date.getUTCMilliseconds());
-  }
+  if(hours===0) hourDisplay = "";
+  if(minutes===0 && hours===0) minuteDisplay = "";
 
 
-  let finalTime = hours+minutes+seconds+milliseconds;
+
   // if(format.split(':'))
   return (
     <React.Fragment>
         <div className = "circleTimerContainer" onClick={props.on?props.controls.stop:props.controls.start}>
             <div className = "timerTime">
-              {finalTime}
+              {hourDisplay+minuteDisplay+secondDisplay+millisecondDisplay}
             </div>
         </div>
         {
