@@ -19,14 +19,22 @@ const getTimeDisplay = (date,mode) =>
     if(milliseconds>=10) millisecondDisplay = milliseconds.toString().substring(0,2);
     else millisecondDisplay = "0"+milliseconds.toString();
 
-    if(seconds>=10) secondDisplay = seconds.toString() + ":";
-    else secondDisplay = "0"+seconds.toString() + ":";
+    if(minutes===0 && hours===0) secondDisplay = seconds.toString() + ":";
+    else
+    {
+      if(seconds>=10) secondDisplay = seconds.toString() + ":";
+      else secondDisplay = "0"+seconds.toString() + ":";
+    }
 
-    if(minutes>=10) minuteDisplay = minutes.toString() + ":";
-    else minuteDisplay = "0"+minutes.toString() + ":";
+    if(hours===0) minuteDisplay = minutes.toString() + ":";
+    else
+    {
+      if(minutes>=10) minuteDisplay = minutes.toString() + ":";
+      else minuteDisplay = "0"+minutes.toString() + ":";
 
-    if(hours>=10) hourDisplay = hours.toString() + ":";
-    else hourDisplay = "0"+hours.toString() + ":";
+    }
+
+    hourDisplay = hours.toString() + ":";
 
     if(hours>0)
     {
@@ -36,6 +44,7 @@ const getTimeDisplay = (date,mode) =>
       if(seconds>=10) secondDisplay = seconds.toString();
       else secondDisplay = "0"+seconds.toString();
     }
+
     //if hours is 0, don't show it
     if(hours===0) hourDisplay = "";
     //if minutes is 0, don't show it
@@ -68,6 +77,29 @@ const getTimeDisplay = (date,mode) =>
     if(minuteDisplay!=="" && secondDisplay!=="") minuteDisplay=minuteDisplay+", ";
 
     return ""+hourDisplay+minuteDisplay+secondDisplay;
+  }
+
+  else if(mode==="numbers_full")
+  {
+    let hourDisplay = "";
+    let minuteDisplay = "";
+    let secondDisplay = "";
+
+
+    if(seconds>=10) secondDisplay = seconds.toString();
+    else secondDisplay = "0"+seconds.toString();
+
+    if(minutes>=10) minuteDisplay = minutes.toString() + ":";
+    else minuteDisplay = "0"+minutes.toString() + ":";
+
+    if(hours>=10) hourDisplay = hours.toString() + ":";
+    else hourDisplay = "0"+hours.toString() + ":";
+
+    return ""+hourDisplay+minuteDisplay+secondDisplay
+  }
+  else
+  {
+    return "BAD_CALL";
   }
 
 }

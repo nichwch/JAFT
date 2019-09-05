@@ -13,7 +13,7 @@ const Timer = (props) =>
   let date = new Date(props.time);
 
   let dateDisplay = getTimeDisplay(date,"numbers");
-  console.log(getTimeDisplay(date,"text"));
+  console.log(getTimeDisplay(date,"numbers_full"));
 
 
 
