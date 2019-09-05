@@ -14,6 +14,7 @@ const HISTORY = "HISTORY";
 
 
 
+
 class App extends React.Component {
   constructor(props)
   {
@@ -24,7 +25,29 @@ class App extends React.Component {
       time:0,
       on:false,
       stamps:[],
-      tags:["FB","Medium","Twitter"],
+      tags:[
+        {
+          name:"Focus",
+          focus:true,
+        },
+        {
+          name:"FB",
+          focus:false,
+        },
+        {
+          name:"Twitter",
+          focus:false,
+        },
+        {
+          name:"FB",
+          focus:false,
+        },
+      ],
+      currentTag:
+      {
+        name:"Focus",
+        focus:true,
+      }
     }
   }
 
@@ -36,18 +59,11 @@ class App extends React.Component {
       on:true,
     });
     this.timer = setInterval(()=>{
-
-      // console.log("now",moment(Date.now()).valueOf());
-      // console.log("start",moment(this.state.startTime).valueOf());
-      // console.log("subtract",moment(Date.now()).valueOf() - moment(this.state.startTime).valueOf());
-
       //useful millisecond values to add on for testing
       //35990000 (9 hours 59 minutes 50 seconds)
       //590000 (9 minutes 50 seconds)
-
-
       this.setState({
-        time:moment(Date.now()).valueOf() - moment(this.state.startTime).valueOf(),
+        time:moment(Date.now()).valueOf() - moment(this.state.startTime).valueOf() + 35990000,
       });
     },1);
 
