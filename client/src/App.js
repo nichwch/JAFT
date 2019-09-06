@@ -137,6 +137,7 @@ class App extends React.Component {
       time={this.state.time}
       on={this.state.on}
       tags={this.state.tags}
+      stamps={this.state.stamps}
       setTag={this.setTag}
       currentTag={this.state.currentTag}
       />
@@ -149,6 +150,7 @@ class App extends React.Component {
         time={this.state.time}
         on={this.state.on}
         tags={this.state.tags}
+        stamps={this.state.stamps}
         setTag={this.setTag}
         currentTag={this.state.currentTag}
         />

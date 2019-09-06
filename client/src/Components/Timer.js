@@ -14,17 +14,30 @@ const Timer = (props) =>
 
   let dateDisplay = getTimeDisplay(date,"numbers");
 
+  let sessionDisplay = "0:00";
+  if(props.stamps.length > 0)
+  {
+    let stampStart = props.stamps[props.stamps.length-1];
+    let sessionLength = props.time - stampStart.stamp;
+
+    sessionDisplay = getTimeDisplay(new Date(sessionLength),"numbers");
+    console.log(sessionDisplay);
+  }
 
 
-  // if(format.split(':'))
+
+
   return (
     <div className="innerAppContainer">
         <div className = {props.currentTag.focus?"circleTimerContainer":"circleTimerContainer distracted"} onClick={props.on?props.controls.stop:props.controls.start}>
             <div className = "tagTitle">
               {props.currentTag.name}
             </div>
-            <div className = "timerTime">
+            <div className = "tagTitle">
               {dateDisplay}
+            </div>
+            <div className = "timerTime">
+              {sessionDisplay}
             </div>
         </div>
         {
