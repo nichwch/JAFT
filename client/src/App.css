@@ -8,8 +8,8 @@ body{
 {
   display:block;
 
-  width:500px;
-  height:500px;
+  width:460px;
+  height:460px;
   /* make height auto later */
 
   margin-left:auto;
@@ -19,6 +19,11 @@ body{
   border-radius:30px;
 
   overflow:hidden;
+}
+
+.innerAppContainer
+{
+  padding:20px;
 }
 
 .appNav

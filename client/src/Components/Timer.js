@@ -13,14 +13,16 @@ const Timer = (props) =>
   let date = new Date(props.time);
 
   let dateDisplay = getTimeDisplay(date,"numbers");
-  console.log(getTimeDisplay(date,"numbers_full"));
 
 
 
   // if(format.split(':'))
   return (
-    <React.Fragment>
-        <div className = "circleTimerContainer" onClick={props.on?props.controls.stop:props.controls.start}>
+    <div className="innerAppContainer">
+        <div className = {props.currentTag.focus?"circleTimerContainer":"circleTimerContainer distracted"} onClick={props.on?props.controls.stop:props.controls.start}>
+            <div className = "tagTitle">
+              {props.currentTag.name}
+            </div>
             <div className = "timerTime">
               {dateDisplay}
             </div>
@@ -33,11 +35,11 @@ const Timer = (props) =>
         }
 
         {props.tags.map((tag,i)=>{return (
-          <button key={i}>
+          <button key={i} onClick={()=>{props.setTag(tag)}}>
             {tag.name}
           </button>
         )})}
-    </React.Fragment>
+    </div>
   )
 }
 

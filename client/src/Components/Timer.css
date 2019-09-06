@@ -32,11 +32,17 @@
 
 .timerTime
 {
-  margin-top:50px;
   text-align:center;
   font-size:65px;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+}
+
+.tagTitle
+{
+  text-align:center;
+  line-height:50px;
+  font-size:17.5px;
 }

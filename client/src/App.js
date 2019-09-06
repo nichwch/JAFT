@@ -19,13 +19,9 @@ class App extends React.Component {
   constructor(props)
   {
     super(props);
-    this.state = {
-      mode:TIMER,
-      startTime:0,
-      time:0,
-      on:false,
-      stamps:[],
-      tags:[
+    this.state = this.resetState();
+    this.state.tags =
+    [
         {
           name:"Focus",
           focus:true,
@@ -39,20 +35,38 @@ class App extends React.Component {
           focus:false,
         },
         {
-          name:"FB",
+          name:"Medium",
           focus:false,
         },
-      ],
-      currentTag:
+    ];
+    this.state.currentTag = {name:"Focus",focus:true,};
+    this.state.mode = TIMER;
+  }
+
+  resetState = () =>{
+    return(
       {
-        name:"Focus",
-        focus:true,
+        startTime:0,
+        time:0,
+        on:false,
+        stamps:[],
       }
-    }
+    );
   }
 
   startTimer = () =>
   {
+    let stamps;
+    if(this.state.time == 0)
+    {
+      stamps = this.state.stamps;
+      stamps.push({tag:this.state.currentTag,start:true,stamp:this.state.time.valueOf()});
+
+      this.setState({
+        stamps:stamps,
+        currentTag:this.state.currentTag
+      });
+    }
     this.setState({
       startTime:Date.now()-this.state.time,
       time:this.state.time,
@@ -66,6 +80,40 @@ class App extends React.Component {
         time:moment(Date.now()).valueOf() - moment(this.state.startTime).valueOf(),
       });
     },1);
+  }
+
+
+  setTag = (newTag) =>
+  {
+    let oldTag = this.state.currentTag;
+    if(oldTag.name!==newTag.name || oldTag.focus!==newTag.focus)
+    {
+      let stamps = this.state.stamps;
+
+      if(!this.state.on)
+      {
+        if(stamps[stamps.length-1].stamp === this.state.time)
+        {
+          stamps.pop();
+          stamps.push({tag:newTag,start:true,stamp:this.state.time});
+          this.setState({
+            stamps:stamps,
+            currentTag:newTag
+          },()=>{console.log(stamps)});
+          return;
+        }
+
+      }
+      //close the previous tag
+      stamps.push({tag:oldTag,start:false,stamp:this.state.time});
+      //open the new tag
+      stamps.push({tag:newTag,start:true,stamp:this.state.time});
+
+      this.setState({
+        stamps:stamps,
+        currentTag:newTag
+      },()=>{console.log(stamps,this.state.time)});
+    }
 
   }
 
@@ -77,10 +125,7 @@ class App extends React.Component {
   }
 
   resetTimer = () => {
-    this.setState({
-      time:0,
-      on:false,
-    })
+    this.setState(this.resetState());
   }
 
 
@@ -92,6 +137,8 @@ class App extends React.Component {
       time={this.state.time}
       on={this.state.on}
       tags={this.state.tags}
+      setTag={this.setTag}
+      currentTag={this.state.currentTag}
       />
       </React.Fragment>);
     if(this.state.mode===TIMER)
@@ -102,6 +149,8 @@ class App extends React.Component {
         time={this.state.time}
         on={this.state.on}
         tags={this.state.tags}
+        setTag={this.setTag}
+        currentTag={this.state.currentTag}
         />
         </React.Fragment>);
     }
@@ -129,8 +178,10 @@ class App extends React.Component {
             Save
           </div>
         </div>
+
         {content}
       </div>
+      {this.state.stamps.map((j)=>{return j.tag.name})}
       </React.Fragment>)
   }
 }
