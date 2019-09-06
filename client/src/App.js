@@ -63,7 +63,7 @@ class App extends React.Component {
       //35990000 (9 hours 59 minutes 50 seconds)
       //590000 (9 minutes 50 seconds)
       this.setState({
-        time:moment(Date.now()).valueOf() - moment(this.state.startTime).valueOf() + 35990000,
+        time:moment(Date.now()).valueOf() - moment(this.state.startTime).valueOf(),
       });
     },1);
 
