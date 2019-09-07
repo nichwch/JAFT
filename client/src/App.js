@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 
-import Timer from "./Components/Timer";
-import Session from "./Components/Session";
+import Timer from "./Components/Timer/Timer";
+import Session from "./Components/Session/Session";
 import History from "./Components/History";
 
 var localforage = require("localforage");
@@ -176,7 +176,12 @@ class App extends React.Component {
     }
     else if(this.state.mode===SESSION)
     {
-      content = (<React.Fragment><Session /></React.Fragment>);
+      content = (<React.Fragment>
+                    <Session
+                      stamps={this.state.stamps}
+                      time={this.state.time}
+                    />
+                 </React.Fragment>);
     }
     else if(this.state.mode===HISTORY)
     {
@@ -201,7 +206,6 @@ class App extends React.Component {
 
         {content}
       </div>
-      {this.state.stamps.map((j)=>{return j.tag.name})}
       </React.Fragment>)
   }
 }

@@ -83,7 +83,7 @@ const Timer = (props) =>
             className={tag.focus?"tagButtonDelete":"tagButtonDelete distracted"}
             onClick={
               ()=>{
-                props.removeTag(i)
+                if(window.confirm("Delete this tag?")) props.removeTag(i)
               }
             }
 
