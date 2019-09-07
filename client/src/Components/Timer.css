@@ -48,6 +48,19 @@
   font-size:17.5px;
 }
 
+.distractedTitle
+{
+  width:150px;
+
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  line-height:25px;
+  font-size:17.5px;
+  background-color:black;
+  color:red;
+}
+
 .timerButtonContainer
 {
   margin-top:20px;
@@ -144,4 +157,23 @@
 .focusCheckBox.checked
 {
   background-color:black;
+}
+
+.resetButton
+{
+  display:block;
+
+  margin-top:20px;
+  margin-left:auto;
+  margin-right:auto;
+
+  border:none;
+  background-color:rgba(255,0,0,0.5);
+  color:black;
+  font-size:20px;
+}
+
+.resetButton:hover
+{
+  background-color:rgba(255,0,0,0.7);
 }

@@ -61,12 +61,17 @@ const Timer = (props) =>
             <div className = "tagTitle">
               {props.currentTag.name}
             </div>
+            {props.currentTag.focus?null:
+            <div className = "distractedTitle">
+              DISTRACTED
+            </div>
+            }
         </div>
         {
           ((!props.on)&&(props.time>0))?
-          <button onClick={props.controls.reset}>reset</button>
+          <button className="resetButton" onClick={props.controls.reset}>reset</button>
           :
-          null
+          <div style={{marginTop:"66px"}}></div>
         }
         <div className="timerButtonContainer">
         {props.tags.map((tag,i)=>{return (
