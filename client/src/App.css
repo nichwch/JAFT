@@ -6,13 +6,8 @@ body{
 
 button:focus
 {
-  outline:none;
-  border-top:none;
-  border-left:none;
-  border-right:none;
-  border-bottom-style:solid;
-  border-bottom-color:rgba(255,0,0,0.3);
-  border-bottom-width:3px;
+  outline-color:black;
+  outline-width:2px;
 }
 
 .appContainer
@@ -30,6 +25,8 @@ button:focus
   border-radius:30px;
 
   overflow:hidden;
+
+  background-color:rgba(0,0,0,0.5);
 }
 
 .innerAppContainer
@@ -49,6 +46,11 @@ button:focus
   padding:10px;
   border:none;
   font-size:15px;
+}
+.leftNav:focus, .centralNav:focus, .rightNav:focus
+{
+  outline:none;
+  background-color:grey;
 }
 
 .leftNav

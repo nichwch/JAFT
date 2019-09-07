@@ -69,7 +69,7 @@ const Timer = (props) =>
         </div>
         {
           ((!props.on)&&(props.time>0))?
-          <button className="resetButton" onClick={props.controls.reset}>reset</button>
+          <button className={props.currentTag.focus?"resetButton":"resetButton distracted"}onClick={props.controls.reset}>reset</button>
           :
           <div style={{marginTop:"66px"}}></div>
         }
@@ -111,7 +111,7 @@ const Timer = (props) =>
                 setFocusVal(e.target.checked)
               }
             } />
-        <button className="submitTagForm" onClick={
+        <button className={props.currentTag.focus?"submitTagForm":"submitTagForm distracted"} onClick={
           ()=>{
             if(tagFormValue.length>0)
             {

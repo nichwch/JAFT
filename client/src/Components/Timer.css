@@ -1,3 +1,11 @@
+:root {
+  --main-pink:#FF848B;
+  --darker-pink:#FF535B;
+  --distracted-pink:#AC3539;
+  --distracted-darker-pink:#960000;
+  --field-gray:#d6d6d6;
+}
+
 .circleTimerContainer
 {
   display:block;
@@ -10,25 +18,19 @@
   border-radius:50%;
   padding-top:70px;
   padding-bottom:70px;
-  background-color:rgba(255,0,0,0.5);
+  background-color:var(--main-pink);
   border:none;
 }
 
 .circleTimerContainer:hover
 {
-  background-color:rgba(255,0,0,0.7);
-  border:none;
-}
-
-.circleTimerContainer.distracted
-{
-  background-color:rgba(150,0,0,0.8);
+  background-color:var(--darker-pink);
   border:none;
 }
 
 .circleTimerContainer.distracted:hover
 {
-  background-color:rgba(150,0,0,1);
+  background-color:var(--distracted-darker-pink);
 }
 
 .timerTime
@@ -79,29 +81,29 @@
 .tagForm:focus
 {
   outline:none;
-  background-color:rgba(255,0,0,0.5);
+  background-color:var(--main-pink);
 }
 
 .submitTagForm
 {
   border:none;
-  background-color:rgba(255,0,0,0.5);
+  background-color:var(--main-pink);
   margin:3.5px 7px 3.5px 0px;
   color:black;
   font-size:20px;
   vertical-align:bottom;
+  width:29px;
   padding-bottom:5px;
 }
 
 .submitTagForm:focus
 {
-  outline:none;
-  border:none;
+
 }
 
 .submitTagForm:hover
 {
-  background-color:rgba(255,0,0,0.7);
+  background-color:var(--darker-pink);
 }
 
 .tagButtonCoupler
@@ -114,15 +116,11 @@
 .tagButtonName,.tagButtonDelete
 {
   border:none;
-  background-color:rgba(255,0,0,0.5);
+  background-color:var(--main-pink);
   color:black;
   font-size:20px;
 }
 
-.tagButtonName.distracted,.tagButtonDelete.distracted
-{
-  background-color:rgba(150,0,0,0.8);
-}
 
 .tagButtonDelete
 {
@@ -168,12 +166,17 @@
   margin-right:auto;
 
   border:none;
-  background-color:rgba(255,0,0,0.5);
+  background-color:var(--main-pink);
   color:black;
   font-size:20px;
 }
 
 .resetButton:hover
 {
-  background-color:rgba(255,0,0,0.7);
+  background-color:var(--darker-pink);
+}
+
+.distracted
+{
+  background-color:var(--distracted-pink);
 }
