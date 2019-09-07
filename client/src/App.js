@@ -72,6 +72,7 @@ class App extends React.Component {
 
   startTimer = () =>
   {
+    console.log("START");
     let stamps;
     if(this.state.time == 0)
     {
@@ -142,6 +143,7 @@ class App extends React.Component {
   }
 
   stopTimer = () => {
+    console.log("STOP");
     this.setState({
       on:false,
     })

@@ -2,17 +2,18 @@ import React,{useState,useEffect} from "react";
 import "./Timer.css";
 import {getTimeDisplay} from "./TimerUtils";
 
-
 var moment = require('moment');
 
 const Timer = (props) =>
 {
-  // useEffect(()=>{
-  //   props.controls.start();
-  // },[]);
+
+
+
   let date = new Date(props.time);
 
   let [tagFormValue,setTagFormValue] = useState("");
+  //true means its a distraction, false means its not
+  let [focusVal,setFocusVal] = useState(false);
 
   let dateDisplay = getTimeDisplay(date,"numbers");
 
@@ -23,15 +24,31 @@ const Timer = (props) =>
     let sessionLength = props.time - stampStart.stamp;
 
     sessionDisplay = getTimeDisplay(new Date(sessionLength),"numbers");
-    console.log(sessionDisplay);
   }
 
+  let toggle = () => {
+    console.log(props.on);
+    if(props.on) props.controls.stop();
+    else props.controls.start();
+  }
 
+  let spaceToggle = (e) => {
+     if(e.code === "Space") toggle();
+   };
+
+  useEffect(()=>{
+    document.addEventListener("keyup",spaceToggle);
+    return(
+      ()=>{
+        document.removeEventListener("keyup",spaceToggle);
+      }
+    );
+  },[props.on]);
 
 
   return (
     <div className="innerAppContainer">
-        <button className = {props.currentTag.focus?"circleTimerContainer":"circleTimerContainer distracted"} onClick={props.on?props.controls.stop:props.controls.start}>
+        <div className = {props.currentTag.focus?"circleTimerContainer":"circleTimerContainer distracted"} onClick={()=>{toggle()}}>
             <div className = "tagTitle">
               Total
             </div>
@@ -44,7 +61,7 @@ const Timer = (props) =>
             <div className = "tagTitle">
               {props.currentTag.name}
             </div>
-        </button>
+        </div>
         {
           ((!props.on)&&(props.time>0))?
           <button onClick={props.controls.reset}>reset</button>
@@ -53,7 +70,7 @@ const Timer = (props) =>
         }
         <div className="timerButtonContainer">
         {props.tags.map((tag,i)=>{return (
-          <span className="tagButtonCoupler">
+          <span className="tagButtonCoupler" key={i}>
           <button className={tag.focus?"tagButtonName":"tagButtonName distracted"} key={i} onClick={()=>{props.setTag(tag)}}>
             {tag.name}
           </button>
@@ -72,17 +89,30 @@ const Timer = (props) =>
         <br/>
         <input
           className="tagForm"
-          placeholder="add a new tag..."
+          placeholder="add a new category..."
           value={tagFormValue}
           onChange={(e)=>{setTagFormValue(e.target.value)}}
         />
+        <span className="focusCheckBoxCaption">
+        Distraction?
+        </span>
+        <input
+            type="checkbox"
+            className={focusVal?"focusCheckBox checked":"focusCheckBox"}
+            checked={focusVal}
+            onChange={
+              (e)=>
+              {
+                setFocusVal(e.target.checked)
+              }
+            } />
         <button className="submitTagForm" onClick={
           ()=>{
             if(tagFormValue.length>0)
             {
               let newTag = {
                 name:tagFormValue,
-                focus:false,
+                focus:!focusVal,
               }
               props.addTag(newTag);
               setTagFormValue("");
