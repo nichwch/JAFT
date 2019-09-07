@@ -54,6 +54,22 @@ class App extends React.Component {
     );
   }
 
+  addTag = (newTag) =>{
+    let tags = this.state.tags;
+    tags.push(newTag);
+    this.setState({
+      tags:tags
+    });
+  }
+
+  removeTag = (index)=>{
+    let tags = this.state.tags;
+    tags.splice(index,1);
+    this.setState({
+      tags:tags
+    });
+  }
+
   startTimer = () =>
   {
     let stamps;
@@ -92,7 +108,15 @@ class App extends React.Component {
 
       if(!this.state.on)
       {
-        if(stamps[stamps.length-1].stamp === this.state.time)
+        console.log(stamps);
+        if(stamps.length === 0)
+        {
+          this.setState({
+            currentTag:newTag
+          });
+          return;
+        }
+        else if(stamps[stamps.length-1].stamp === this.state.time)
         {
           stamps.pop();
           stamps.push({tag:newTag,start:true,stamp:this.state.time});
@@ -139,22 +163,14 @@ class App extends React.Component {
       tags={this.state.tags}
       stamps={this.state.stamps}
       setTag={this.setTag}
+      removeTag={this.removeTag}
+      addTag={this.addTag}
       currentTag={this.state.currentTag}
       />
       </React.Fragment>);
     if(this.state.mode===TIMER)
     {
-      content = (<React.Fragment>
-        <Timer
-        controls={{start:this.startTimer,stop:this.stopTimer,reset:this.resetTimer}}
-        time={this.state.time}
-        on={this.state.on}
-        tags={this.state.tags}
-        stamps={this.state.stamps}
-        setTag={this.setTag}
-        currentTag={this.state.currentTag}
-        />
-        </React.Fragment>);
+      content = content;
     }
     else if(this.state.mode===SESSION)
     {
@@ -167,18 +183,18 @@ class App extends React.Component {
     return (<React.Fragment>
       <div className="appContainer">
         <div className="appNav">
-          <div className={this.state.mode===TIMER?"leftNav selected":"leftNav"} onClick={()=>{this.setState({mode:TIMER})}}>
+          <button className={this.state.mode===TIMER?"leftNav selected":"leftNav"} onClick={()=>{this.setState({mode:TIMER})}}>
             Timer
-          </div>
-          <div className={this.state.mode===SESSION?"centralNav selected":"centralNav"} onClick={()=>{this.setState({mode:SESSION})}}>
+          </button>
+          <button className={this.state.mode===SESSION?"centralNav selected":"centralNav"} onClick={()=>{this.setState({mode:SESSION})}}>
             Session
-          </div>
-          <div className={this.state.mode===HISTORY?"centralNav selected":"centralNav"} onClick={()=>{this.setState({mode:HISTORY})}}>
+          </button>
+          <button className={this.state.mode===HISTORY?"centralNav selected":"centralNav"} onClick={()=>{this.setState({mode:HISTORY})}}>
             History
-          </div>
-          <div className="rightNav">
+          </button>
+          <button className="rightNav">
             Save
-          </div>
+          </button>
         </div>
 
         {content}

@@ -12,6 +12,8 @@ const Timer = (props) =>
   // },[]);
   let date = new Date(props.time);
 
+  let [tagFormValue,setTagFormValue] = useState("");
+
   let dateDisplay = getTimeDisplay(date,"numbers");
 
   let sessionDisplay = "0:00";
@@ -29,9 +31,9 @@ const Timer = (props) =>
 
   return (
     <div className="innerAppContainer">
-        <div className = {props.currentTag.focus?"circleTimerContainer":"circleTimerContainer distracted"} onClick={props.on?props.controls.stop:props.controls.start}>
+        <button className = {props.currentTag.focus?"circleTimerContainer":"circleTimerContainer distracted"} onClick={props.on?props.controls.stop:props.controls.start}>
             <div className = "tagTitle">
-              {props.currentTag.name}
+              Total
             </div>
             <div className = "tagTitle">
               {dateDisplay}
@@ -39,19 +41,55 @@ const Timer = (props) =>
             <div className = "timerTime">
               {sessionDisplay}
             </div>
-        </div>
+            <div className = "tagTitle">
+              {props.currentTag.name}
+            </div>
+        </button>
         {
           ((!props.on)&&(props.time>0))?
           <button onClick={props.controls.reset}>reset</button>
           :
           null
         }
-
+        <div className="timerButtonContainer">
         {props.tags.map((tag,i)=>{return (
-          <button key={i} onClick={()=>{props.setTag(tag)}}>
+          <span className="tagButtonCoupler">
+          <button className={tag.focus?"tagButtonName":"tagButtonName distracted"} key={i} onClick={()=>{props.setTag(tag)}}>
             {tag.name}
           </button>
+          <button
+            className={tag.focus?"tagButtonDelete":"tagButtonDelete distracted"}
+            onClick={
+              ()=>{
+                props.removeTag(i)
+              }
+            }
+
+          >X
+          </button>
+          </span>
         )})}
+        <br/>
+        <input
+          className="tagForm"
+          placeholder="add a new tag..."
+          value={tagFormValue}
+          onChange={(e)=>{setTagFormValue(e.target.value)}}
+        />
+        <button className="submitTagForm" onClick={
+          ()=>{
+            if(tagFormValue.length>0)
+            {
+              let newTag = {
+                name:tagFormValue,
+                focus:false,
+              }
+              props.addTag(newTag);
+              setTagFormValue("");
+            }
+          }
+        }>+</button>
+        </div>
     </div>
   )
 }
