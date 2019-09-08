@@ -188,6 +188,8 @@ class App extends React.Component {
       content = (<React.Fragment><History /></React.Fragment>);
     }
     return (<React.Fragment>
+      <div className="background">
+      </div>
       <div className="appContainer">
         <div className="appNav">
           <button className={this.state.mode===TIMER?"leftNav selected":"leftNav"} onClick={()=>{this.setState({mode:TIMER})}}>

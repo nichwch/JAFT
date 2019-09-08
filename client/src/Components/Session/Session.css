@@ -1,4 +1,22 @@
 .barWrapper
 {
+  display:flex;
+  width:100%;
+  height:100px;
+  background-color:var(--transparent-grey);
+  overflow:hidden;
+}
 
+.barElement
+{
+  display:inline-block;
+  height:100px;
+  background-color:black;
+  margin:0px;
+  border-right:3px solid;
+}
+
+.barChartContainer
+{
+  padding:20px;
 }

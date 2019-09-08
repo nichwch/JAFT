@@ -1,3 +1,14 @@
+:root{
+  --transparent-grey:rgba(30,30,30,0.8);
+
+  --focus-color:#FF848B;
+  --focus-hover:#FF535B;
+  --distracted-color:#AC3539;
+  --distracted-color:#960000;
+  --field-gray:#d6d6d6;
+}
+
+
 body{
   font-family:arial;
   margin:0px;
@@ -10,13 +21,28 @@ button:focus
   outline-width:2px;
 }
 
+.background
+{
+  position:absolute;
+
+  top:0px;
+
+  width:100vw;
+  height:100vh;
+  margin:0px;
+  z-index:-100;
+  background-image:url("vaporwave1.gif");
+  background-size:cover;
+}
+
 .appContainer
 {
   display:block;
 
   width:460px;
-  height:auto;
+  height:573px;
   /* make height auto later */
+  /* or leave it non auto, looks more object like */
 
   margin-left:auto;
   margin-right:auto;
@@ -26,7 +52,7 @@ button:focus
 
   overflow:hidden;
 
-  background-color:rgba(0,0,0,0.5);
+  background-color:var(--transparent-grey);
 }
 
 .innerAppContainer
@@ -46,11 +72,13 @@ button:focus
   padding:10px;
   border:none;
   font-size:15px;
+  background-color:black;
+  color:white;
 }
 .leftNav:focus, .centralNav:focus, .rightNav:focus
 {
   outline:none;
-  background-color:grey;
+  background-color:rgba(30,30,30,0.3);
 }
 
 .leftNav
@@ -62,5 +90,5 @@ button:focus
 
 .leftNav.selected, .centralNav.selected, .rightNav.selected
 {
-  background-color:grey;
+  background-color:rgba(70,70,70,0.1);
 }

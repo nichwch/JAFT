@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
+import "./Session.css";
 
 const Session = (props) =>
 {
@@ -14,7 +15,6 @@ const Session = (props) =>
       }
     )
   }
-  console.log(stamps);
 
   let bars = [];
   for(let i = 1; i<stamps.length;i+=2)
@@ -24,21 +24,34 @@ const Session = (props) =>
     let length = end-start;
     let name = stamps[i].tag.name;
     let focus = stamps[i].tag.focus;
-    console.log(length/props.time);
+    // console.log(length/props.time);
     if(bars.length>0 && bars[bars.length-1].name === name) bars[bars.length-1].time+=length;
     // console.log(stamps[i-1].tag.name);
     // console.log(stamps[i].tag.name);
-    else bars.push({time:length,name:name,focus:focus});
+    else if(length>0) bars.push({time:length,name:name,focus:focus});
 
   }
 
   console.log(bars);
-  console.log(props.time);
+  // console.log(props.time);
+  //
+  // let roundUtil = (num) =>{
+  //   return Math.round( num * 10 + Number.EPSILON ) / 10;
+  // }
 
   let barDisplay = (<div className="barWrapper">
       {bars.map(
           (el,i)=>{
+            return(<span key={i} className="barElement" style={{width:
+              `calc(${(((el.time/props.time)*100)+"%")})`,
+              backgroundColor:(el.focus?"var(--focus-color)":"var(--distracted-color)"),
+              borderRightColor:(el.focus?"var(--focus-hover)":"var(--distracted-hover)"),
 
+
+              }}>
+
+              </span>
+            )
           }
         )}
     </div>
@@ -48,8 +61,9 @@ const Session = (props) =>
 
   return (
     <React.Fragment>
-    Session<br/>
-    {stamps.map((j)=>{return j.tag.name})}
+    <div className="barChartContainer">
+    {barDisplay}
+    </div>
     </React.Fragment>
   )
 }
