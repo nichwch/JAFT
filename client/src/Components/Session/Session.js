@@ -4,10 +4,11 @@ import {getTimeDisplay} from "../../TimerUtils";
 
 const Session = (props) =>
 {
-  let totalTime = props.time;
   let stamps = props.stamps.slice();
 
-  let [initTime,setInitTime] = useState(0);
+  // let [initTime,setInitTime] = useState(0);
+  // let [initTime,setInitTime] = useState(props.time);
+  let initTime = props.time;
   let [currentTag,set_currentTag] = useState("");
 
   const NA = "NA";
@@ -17,11 +18,11 @@ const Session = (props) =>
 
   let [sortByMode,set_sortByMode] = useState(ALL);
 
-  useEffect(
-    ()=>{
-    setInitTime(props.time);
-  },[]
-  );
+  // useEffect(
+  //   ()=>{
+  //   setInitTime(props.time);
+  // },[]
+  // );
 
   if(stamps.length>0)
   {
@@ -123,10 +124,11 @@ const Session = (props) =>
   let distractionAvg,focusAvg = "";
 
   distractionTotal = distractionArr.reduce( (acc,cv)=>{ return acc+cv },0 );
-  distractionAvg = distractionTotal/distractionArr.length;
+  distractionAvg = (distractionTotal/distractionArr.length)||0;
 
   focusTotal = focusArr.reduce( (acc,cv)=>{ return acc+cv },0  );
-  focusAvg = focusTotal/focusArr.length;
+  focusAvg = (focusTotal/focusArr.length)||0;
+
 
 
   let infoContent = null;

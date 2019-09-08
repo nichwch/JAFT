@@ -3,9 +3,9 @@ import "./App.css";
 
 import Timer from "./Components/Timer/Timer";
 import Session from "./Components/Session/Session";
-import History from "./Components/History";
+import History from "./Components/History/History";
 
-var localforage = require("localforage");
+const localforage = require("localforage");
 const moment = require("moment");
 
 const TIMER = "TIMER";
@@ -41,6 +41,12 @@ class App extends React.Component {
     ];
     this.state.currentTag = {name:"Focus",focus:true,};
     this.state.mode = TIMER;
+
+    var store = localforage.createInstance({
+      name: "JAFT"
+    });
+    this.state.forage = store;
+    console.log(this.state.forage);
   }
 
   resetState = () =>{
@@ -70,6 +76,7 @@ class App extends React.Component {
     });
   }
 
+  //not idempotent
   startTimer = () =>
   {
     console.log("START");
@@ -142,6 +149,7 @@ class App extends React.Component {
 
   }
 
+  //idempotent
   stopTimer = () => {
     console.log("STOP");
     this.setState({
@@ -186,7 +194,7 @@ class App extends React.Component {
     }
     else if(this.state.mode===HISTORY)
     {
-      content = (<React.Fragment><History /></React.Fragment>);
+      content = (<React.Fragment><History forage={this.state.forage}/></React.Fragment>);
     }
     return (<React.Fragment>
       <div className="background">
@@ -202,7 +210,45 @@ class App extends React.Component {
           <button className={this.state.mode===HISTORY?"centralNav selected":"centralNav"} onClick={()=>{this.setState({mode:HISTORY})}}>
             History
           </button>
-          <button className="rightNav">
+          <button className="rightNav"
+          onClick={
+            ()=>{
+              this.stopTimer();
+              var name = window.prompt("Enter a name for your session. Note: This will end your session.");
+              if(name===null) return;
+              else if(name==="")
+              {
+                window.alert("Please enter a full name");
+                return;
+              }
+              else
+              {
+                let hash = Math.random()
+                  .toString(36)
+                  .substr(2, 9);
+
+                this.state.forage.setItem(hash,
+                  {
+                    name:name,
+                    stamps:this.state.stamps,
+                    date:new Date(),
+                    time:this.state.time,
+                    tags:this.state.tags
+                  }
+                )
+                this.resetTimer();
+              }
+
+
+              //needed params
+              // name
+              // stamps={this.state.stamps}
+              // time={this.state.time}
+              // tags={this.state.tags}
+            }
+          }
+
+          >
             Save
           </button>
         </div>

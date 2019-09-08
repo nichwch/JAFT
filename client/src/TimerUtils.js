@@ -6,7 +6,6 @@ const getTimeDisplay = (date,mode) =>
   let minutes = Math.floor((date.getTime()%3600000)/60000);
   let seconds = Math.floor(((date.getTime()%3600000)%60000)/1000);
   let milliseconds = Math.floor((((date.getTime()%3600000)%60000)%1000));
-  // console.log(hours,":",minutes,":",seconds,":",milliseconds);
 
   if(mode==="numbers")
   {
@@ -78,6 +77,7 @@ const getTimeDisplay = (date,mode) =>
 
     if(seconds===0 && minutes===0 && hours===0)
     {
+      if(milliseconds===0) return "0 seconds";
       return "<1 second";
     }
 

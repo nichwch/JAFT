@@ -1,0 +1,21 @@
+.settingsContainer
+{
+  margin-top:20px;
+  height:173px;
+  padding:20px 20px 20px 20px;
+  background:var(--buttonSkin);
+}
+
+.historyContainer
+{
+  height:262px;
+  padding:20px;
+  overflow-y:scroll;
+}
+
+.sessionListing
+{
+  padding:10px;
+  margin:10px;
+  color:white;
+}

@@ -27,7 +27,6 @@ const Timer = (props) =>
   }
 
   let toggle = () => {
-    console.log(props.on);
     if(props.on) props.controls.stop();
     else props.controls.start();
   }
