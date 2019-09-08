@@ -6,6 +6,9 @@
   --distracted-color:#AC3539;
   --distracted-color:#960000;
   --field-gray:#d6d6d6;
+
+  --buttonSkin:url("woodtexture.jpg");
+  /* --buttonSkin:#8f3d9f; */
 }
 
 
@@ -23,7 +26,7 @@ button:focus
 
 .background
 {
-  position:absolute;
+  position:fixed;
 
   top:0px;
 
@@ -40,21 +43,23 @@ button:focus
   display:block;
 
   width:460px;
-  height:573px;
+  min-height:573px;
   /* make height auto later */
   /* or leave it non auto, looks more object like */
 
   margin-left:auto;
   margin-right:auto;
-  margin-top:10vh;
+  margin-top:30px;
+  margin-bottom:30px;
   /* border:2px solid black; */
   border-radius:30px;
 
-  overflow:hidden;
+  overflow-y:scroll;
 
   background-color:var(--transparent-grey);
 }
 
+/*unused but its still in the JS*/
 .innerAppContainer
 {
 

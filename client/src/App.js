@@ -180,6 +180,7 @@ class App extends React.Component {
                     <Session
                       stamps={this.state.stamps}
                       time={this.state.time}
+                      tags={this.state.tags}
                     />
                  </React.Fragment>);
     }

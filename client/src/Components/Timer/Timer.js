@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import "./Timer.css";
-import {getTimeDisplay} from "./TimerUtils";
+import {getTimeDisplay} from "../../TimerUtils";
 
 var moment = require('moment');
 
@@ -113,7 +113,7 @@ const Timer = (props) =>
             } />
         <button className={props.currentTag.focus?"submitTagForm":"submitTagForm distracted"} onClick={
           ()=>{
-            if(tagFormValue.length>0)
+            if(tagFormValue.trim().length>0)
             {
               let newTag = {
                 name:tagFormValue,

@@ -61,7 +61,7 @@
 {
   margin-top:20px;
   padding:20px 20px 20px 20px;
-  background-image:url("woodtexture.jpg");
+  background:var(--buttonSkin);
 }
 
 
@@ -90,11 +90,6 @@
   vertical-align:bottom;
   width:29px;
   padding-bottom:5px;
-}
-
-.submitTagForm:focus
-{
-
 }
 
 .submitTagForm:hover

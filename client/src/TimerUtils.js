@@ -76,6 +76,11 @@ const getTimeDisplay = (date,mode) =>
 
     if(minuteDisplay!=="" && secondDisplay!=="") minuteDisplay=minuteDisplay+", ";
 
+    if(seconds===0 && minutes===0 && hours===0)
+    {
+      return "<1 second";
+    }
+
     return ""+hourDisplay+minuteDisplay+secondDisplay;
   }
 
