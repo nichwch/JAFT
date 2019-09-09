@@ -24,7 +24,7 @@
 .sessionBottomContainer
 {
   margin-top:20px;
-  height:200px;
+  min-height:200px;
   padding:20px 20px 20px 20px;
   background:var(--buttonSkin);
 }

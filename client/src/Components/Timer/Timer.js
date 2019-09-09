@@ -32,7 +32,14 @@ const Timer = (props) =>
   }
 
   let spaceToggle = (e) => {
-     if(e.code === "Space") toggle();
+     if(e.code === "Space")
+     {
+       toggle();
+       //doesn't work for some reason
+       // e.preventDefault();
+       // return false;
+     }
+
    };
 
   useEffect(()=>{
@@ -68,7 +75,17 @@ const Timer = (props) =>
         </div>
         {
           ((!props.on)&&(props.time>0))?
-          <button className={props.currentTag.focus?"resetButton":"resetButton distracted"}onClick={props.controls.reset}>reset</button>
+          <button className={props.currentTag.focus?"resetButton":"resetButton distracted"}
+          onClick=
+          {()=>{
+            if(window.confirm("Reset timer? This will erase this session's data."))
+            {
+              props.controls.reset()
+            }
+
+          }
+          }>
+          reset</button>
           :
           <div style={{marginTop:"66px"}}></div>
         }

@@ -12,7 +12,24 @@ const TIMER = "TIMER";
 const SESSION = "SESSION";
 const HISTORY = "HISTORY";
 
-
+const DEFAULT_TAGS = [
+    {
+      name:"Focus",
+      focus:true,
+    },
+    {
+      name:"FB",
+      focus:false,
+    },
+    {
+      name:"Twitter",
+      focus:false,
+    },
+    {
+      name:"Medium",
+      focus:false,
+    },
+];
 
 
 class App extends React.Component {
@@ -20,25 +37,7 @@ class App extends React.Component {
   {
     super(props);
     this.state = this.resetState();
-    this.state.tags =
-    [
-        {
-          name:"Focus",
-          focus:true,
-        },
-        {
-          name:"FB",
-          focus:false,
-        },
-        {
-          name:"Twitter",
-          focus:false,
-        },
-        {
-          name:"Medium",
-          focus:false,
-        },
-    ];
+    this.state.tags = []
     this.state.currentTag = {name:"Focus",focus:true,};
     this.state.mode = TIMER;
 
@@ -46,8 +45,24 @@ class App extends React.Component {
       name: "JAFT"
     });
     this.state.forage = store;
+
+
     console.log(this.state.forage);
   }
+
+  componentDidMount()
+  {
+    this.state.forage.getItem("tags")
+    .then(
+      (value)=>{
+        console.log("TTAAAGS",value);
+        if(value!==null) this.setState({tags:value});
+        else this.setState({tags:DEFAULT_TAGS});
+
+      }
+    )
+  }
+
 
   resetState = () =>{
     return(
@@ -65,7 +80,11 @@ class App extends React.Component {
     tags.push(newTag);
     this.setState({
       tags:tags
-    });
+    },
+    ()=>{
+      this.state.forage.setItem("tags",this.state.tags);
+    }
+  );
   }
 
   removeTag = (index)=>{
@@ -73,6 +92,9 @@ class App extends React.Component {
     tags.splice(index,1);
     this.setState({
       tags:tags
+    },
+    ()=>{
+      this.state.forage.setItem("tags",this.state.tags);
     });
   }
 
@@ -216,10 +238,9 @@ class App extends React.Component {
               this.stopTimer();
               var name = window.prompt("Enter a name for your session. Note: This will end your session.");
               if(name===null) return;
-              else if(name==="")
+              else if(name.trim().length===0)
               {
                 window.alert("Please enter a full name");
-                return;
               }
               else
               {

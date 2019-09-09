@@ -15,7 +15,47 @@
 
 .sessionListing
 {
+  border:none;
+  background-color:rgba(0,0,0,0);
+
+  font-size:15px;
+  text-align:left;
+  width:100%;
+  margin:0px;
+  margin-bottom:10px;
+
   padding:10px;
-  margin:10px;
   color:white;
+}
+
+.listingTitle
+{
+  font-size:30px;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+
+.historyBar
+{
+  padding:10px 20px 10px 20px;
+  background-color:black;
+  color:white;
+}
+
+.barBackButton
+{
+  background-color:var(--distracted-color);
+  border:none;
+  font-size:20px
+}
+
+.barTitle
+{
+  font-size:45px;
+}
+
+.barSubtitle
+{
+  margin-top:10px;
 }
