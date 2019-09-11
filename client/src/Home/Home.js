@@ -16,18 +16,10 @@ function Home() {
         <span className="homeTagContainer">
           <span className="homeTags">
             <a
-              href="https://medium.com/@nichwch/what-is-yana-80651554c159?source=your_stories_page---------------------------"
+              href="https://medium.com/@nichwch/what-is-jaft-f543a4fad9d7"
               className="homeTagLink"
             >
               design philosophy
-            </a>
-          </span>
-          <span className="homeTags">
-            <a
-              href="https://medium.com/@nichwch/making-yana-e3fade3f56e7"
-              className="homeTagLink"
-            >
-              making JAFT
             </a>
           </span>
           {/*<span className="homeTags">
@@ -36,7 +28,7 @@ function Home() {
             </Link>
           </span>*/}
           <span className="homeTags">
-            <a href="https://nichwch.github.io/" className="homeTagLink">
+            <a href="http://nicholaschen.io/" className="homeTagLink">
               my website
             </a>
           </span>
@@ -45,10 +37,18 @@ function Home() {
               contact me
             </a>
           </span>
+          <span className="homeTags">
+            <a
+              href="http://yananotes.com/"
+              className="homeTagLink"
+            >
+              YANA notes
+            </a>
+          </span>
         </span>
         <h3 className="title3">JAFT is for staying focused</h3>
         <p>
-          Use the timer to stay mindful of when you're focused, and when you're distracted. Use the scratch area to put down any temporary thoughts.
+          Use the timer to stay mindful of when you're focused, and when you're distracted. Create your own categories to track.
         </p>
         <h3 className="title3">JAFT is lenient</h3>
         <p>
@@ -61,17 +61,17 @@ function Home() {
           A better solution is to be mindful of <b>when</b> you're distracted.
         </p>
 
-        <h3 className="title3">JAFT is your mental "RAM"</h3>
+        <h3 className="title3">JAFT is customizable</h3>
         <p>
-          Longform thoughts belong in your notebook, short but clever thoughts belong on your twitter. Plans and schedules belong in your planner.
+          Most time trackers allow you to keep track of rough, pre-made categories -
+          how much time you spend working, sleeping, exercizing, etc.
           <br/><br/>
-          What about "scratch" thoughts? You're working on a project, and you've thought out a few tasks you think you should knock out.
-          Where do you write them down? It wouldn't make sense to clutter your journal with scratch-work. The notes app on your Mac would work for "scratch" thoughts,
-          But, you might be scribbling down phone numbers, reminders, shopping lists there already - it'd be nice to have
-          a place just for your scratch work.
+          What if you want to track how much time you spend debugging, or searching for files?
+          Or how much time you spend spacing out? There's no way an automatic time tracker can keep
+          track of these categories.
           <br/><br/>
-          Here's an analogy for you. Your notebook/planner is your <b>Hard Drive</b>, JAFT is your <b>Random Access Memory</b>. In other words, it's a place for you
-          to write down things you don't neccessarily need to hold on to long-term. Think of it as mental scratch paper, built right into your focus timer.
+          JAFT allows you to define your own custom categories, and for you to manually track them.
+
         </p>
 
         <h3 className="title3">JAFT is for me</h3>

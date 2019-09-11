@@ -39,7 +39,6 @@ const Timer = (props) =>
        // e.preventDefault();
        // return false;
      }
-
    };
 
   useEffect(()=>{
@@ -55,10 +54,10 @@ const Timer = (props) =>
   return (
     <div className="innerAppContainer">
         <div className = {props.currentTag.focus?"circleTimerContainer":"circleTimerContainer distracted"} onClick={()=>{toggle()}}>
-            <div className = "tagTitle">
+            <div className = "tagSubtitle">
               Total
             </div>
-            <div className = "tagTitle">
+            <div className = "tagSubtitle">
               {dateDisplay}
             </div>
             <div className = "timerTime">

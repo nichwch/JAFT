@@ -24,7 +24,7 @@
 
 .circleTimerContainer.distracted:hover
 {
-  background-color:var(--distracted-color);
+  background-color:var(--distracted-hover);
 }
 
 .timerTime
@@ -37,11 +37,26 @@
   user-select: none; /* Standard */
 }
 
-.tagTitle
+.tagSubtitle
 {
   text-align:center;
   line-height:25px;
   font-size:17.5px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.tagTitle
+{
+  text-align:center;
+  line-height:25px;
+  font-size:40px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .distractedTitle
@@ -51,6 +66,7 @@
   margin-left:auto;
   margin-right:auto;
   text-align:center;
+  margin-top:15px;
   line-height:25px;
   font-size:17.5px;
   background-color:black;
@@ -62,7 +78,7 @@
   margin-top:20px;
   padding:20px 20px 20px 20px;
   background:var(--buttonSkin);
-  
+
 }
 
 
@@ -172,4 +188,49 @@
 .distracted
 {
   background-color:var(--distracted-color);
+}
+
+
+@media only screen and (max-width: 400px) {
+
+
+  .circleTimerContainer
+  {
+    display:block;
+    width:280px;
+    height:140px;
+
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+    border-radius:50%;
+    padding-top:70px;
+    padding-bottom:70px;
+    background-color:var(--focus-color);
+    border:none;
+  }
+
+  .timerTime
+  {
+    text-align:center;
+    font-size:50px;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+
+  .tagSubtitle
+  {
+    text-align:center;
+    line-height:25px;
+    font-size:17.5px;
+  }
+
+  .tagTitle
+  {
+    text-align:center;
+    line-height:25px;
+    font-size:25px;
+  }
 }

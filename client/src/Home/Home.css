@@ -106,6 +106,52 @@ a:hover
   vertical-align:top;
   margin-top:0px;
   display:inline-block;
-  width:321px;
+  width:200px;
   height:70px;
+}
+
+
+@media only screen and (max-width: 400px) {
+  .homeContainer
+  {
+    display:block;
+    width:calc(100% - 20px);
+    min-width:320px;
+    padding:10px;
+  }
+
+  .homeTagContainer
+  {
+    vertical-align:top;
+    margin-top:0px;
+    display:inline-block;
+    width:150px;
+    height:70px;
+  }
+  .homeTags
+  {
+    vertical-align:top;
+    background-color:rgba(255,0,0,0.2);
+    display:inline-block;
+    font-size:13.5px;
+    margin:0px 3px 3px 0px;
+    padding:2px;
+    color:black;
+  }
+
+  .openButton
+  {
+    display:inline-block;
+    vertical-align:top;
+    text-decoration: none;
+    padding:13px;
+    font-size:20px;
+    margin-right:3px;
+    color:black;
+    background-color:rgba(255,0,0,0.2);
+    height:55px;
+    text-align:center;
+    width:100px;
+    line-height:55px;
+  }
 }

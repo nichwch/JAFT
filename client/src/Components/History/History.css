@@ -4,6 +4,7 @@
   height:173px;
   padding:20px 20px 20px 20px;
   background:var(--buttonSkin);
+  overflow-y:scroll;
 }
 
 .historyContainer
@@ -31,10 +32,16 @@
 .listingTitle
 {
   font-size:30px;
-  margin-bottom:7px;
   font-weight:bold;
 }
 
+.listingDeleteButton
+{
+  float:right;
+  margin-right:15px;
+  margin-top:5px;
+  z-index:1000;
+}
 
 .historyBar
 {
