@@ -59,6 +59,8 @@ function Home() {
           New Yorker articles that, while interesting, have nothing to do with the article you're writing?
           <br/><br/>
           A better solution is to be mindful of <b>when</b> you're distracted.
+          <img src="/how_to.jpg" width="100%">
+          </img>
         </p>
 
         <h3 className="title3">JAFT is customizable</h3>

@@ -45,9 +45,6 @@ class App extends React.Component {
       name: "JAFT"
     });
     this.state.forage = store;
-
-
-    console.log(this.state.forage);
   }
 
   componentDidMount()
@@ -55,7 +52,6 @@ class App extends React.Component {
     this.state.forage.getItem("tags")
     .then(
       (value)=>{
-        console.log("TTAAAGS",value);
         if(value!==null) this.setState({tags:value});
         else this.setState({tags:DEFAULT_TAGS});
 
@@ -101,7 +97,6 @@ class App extends React.Component {
   //not idempotent
   startTimer = () =>
   {
-    console.log("START");
     let stamps;
     if(this.state.time == 0)
     {
@@ -138,7 +133,6 @@ class App extends React.Component {
 
       if(!this.state.on)
       {
-        console.log(stamps);
         if(stamps.length === 0)
         {
           this.setState({
@@ -153,7 +147,7 @@ class App extends React.Component {
           this.setState({
             stamps:stamps,
             currentTag:newTag
-          },()=>{console.log(stamps)});
+          });
           return;
         }
 
@@ -166,14 +160,13 @@ class App extends React.Component {
       this.setState({
         stamps:stamps,
         currentTag:newTag
-      },()=>{console.log(stamps,this.state.time)});
+      });
     }
 
   }
 
   //idempotent
   stopTimer = () => {
-    console.log("STOP");
     this.setState({
       on:false,
     })

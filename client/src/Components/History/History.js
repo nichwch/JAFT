@@ -65,8 +65,6 @@ const setTheme = (theme) =>
 
 const History = (props) =>
 {
-  console.log("STYLLEEE",getComputedStyle(document.documentElement)
-    .getPropertyValue('--background'));
   let [sessions,setSessions] = useState([]);
   let [display,setDisplay] = useState(null);
   let [flavorText, set_flavorText] = useState("");
